@@ -1,0 +1,5 @@
+# vanilla include (the 'cxxtest' would be 'CxxTest' if the file was called CxxTest.py!)
+env = Environment(tools = ['default', 'cxxtest'])
+
+#build first simple runner
+env.CxxTest('delegaterunner', ['DelegateBooleanParameter.t.h'], CXXFLAGS='-Wall -W -Wextra')

@@ -22,7 +22,7 @@ private:
 	bool _lastParameter;
 };
 
-class MyTestSuite : public CxxTest::TestSuite
+class DelegateTestSuite : public CxxTest::TestSuite
 {
 public:
   void testParameterTransmission( void )
