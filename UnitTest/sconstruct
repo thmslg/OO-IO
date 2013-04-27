@@ -2,4 +2,7 @@
 env = Environment(tools = ['default', 'cxxtest'])
 
 #build first simple runner
-env.CxxTest('delegaterunner', ['DelegateBooleanParameter.t.h'], CXXFLAGS='-Wall -W -Wextra')
+env.CxxTest('ouptputTest/delegaterunner', ['DelegateBooleanParameter.t.h'], CXXFLAGS='-Wall -W -Wextra')
+
+#run tests
+env.Command("pouet", None,"./ouptputTest/delegaterunner")
