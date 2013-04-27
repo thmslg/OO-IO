@@ -1,5 +1,5 @@
-#include "Delegate.h"
-#include "Notifier.h"
+#include "../Delegate.h"
+#include "../Notifier.h"
 
 class DummyHandlerClass
 {
@@ -21,9 +21,9 @@ public:
 	}
 	bool handlerCalledSinceLastAsk()
 	{
-		bool lastValue = _calledSinceLastAsk;
+		bool wasCalledBefore = _calledSinceLastAsk;
 		_calledSinceLastAsk = false;
-		return lastValue;
+		return wasCalledBefore;
 
 	}
 private:
@@ -34,11 +34,28 @@ private:
 class NotifierSuite : public CxxTest::TestSuite
 {
 public:
+  void testNotify( void )
+  {
+	  DummyHandlerClass handler;
+	  TypedDelegate<DummyHandlerClass> * delegate = new TypedDelegate<DummyHandlerClass>(handler,&DummyHandlerClass::handler);
+	  Notifier notifier;
+	  notifier.subscribe(delegate);
+	  notifier.notify(true);
+	  TS_ASSERT(handler.handlerCalledSinceLastAsk() == true);
+	  notifier.notify(false);
+	  TS_ASSERT(handler.handlerCalledSinceLastAsk() == true);
+
+  }
   void testParameterTransmission( void )
   {
-//	  DummyHandlerClass handler;
-//	  TypedDelegate<DummyHandlerClass> * delegate = new TypedDelegate<DummyHandlerClass>(handler,&DummyHandlerClass::handler);
-//	  Notifier notifier;
-//	  notifier.
+	  DummyHandlerClass handler;
+	  TypedDelegate<DummyHandlerClass> * delegate = new TypedDelegate<DummyHandlerClass>(handler,&DummyHandlerClass::handler);
+	  Notifier notifier;
+	  notifier.subscribe(delegate);
+	  notifier.notify(true);
+	  TS_ASSERT(handler.lastParameterTransmitted() == true);
+	  notifier.notify(false);
+	  TS_ASSERT(handler.lastParameterTransmitted() == false);
+
   }
 };

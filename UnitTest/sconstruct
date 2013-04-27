@@ -6,7 +6,11 @@ testList =  [
 'DelegateBooleanParameter.t.h',
 'Notifier.t.h',
 ]
-env.CxxTest('ouptputTest/delegaterunner',testList, CXXFLAGS='-Wall -W -Wextra')
+
+sourceList =  [
+'../Notifier.cpp',
+]
+env.CxxTest('ouptputTest/delegaterunner',testList + sourceList, CXXFLAGS='-Wall -W -Wextra')
 
 #run tests
 env.Command("pouet", None,"./ouptputTest/delegaterunner")

@@ -1,39 +1,21 @@
 #include "Notifier.h"
 
-
-Notifier::Notifier():
-_delegateContainerSize(maxNumberOfDelegates),
-_delegateContainerIndex(0)
-{
-}
-
-Notifier::~Notifier()
-{
-}
-
 //--------------------------------------------------------------------------------------------------------
-bool Notifier::subscribe(Delegate * const delegateToInvoke)
+void Notifier::subscribe(Delegate * const delegateToInvoke)
 {
-	bool IsSubscribed = false;
-
-    //! \todo replace this test by an assertion
-	if (_delegateContainerIndex < _delegateContainerSize)
-	{
-		_delegateContainer[_delegateContainerIndex] = delegateToInvoke;
-		_delegateContainerIndex++;
-		IsSubscribed = true;
-	}
-	return IsSubscribed;
+	_delegateContainer.push_back(delegateToInvoke);
 }
 
 //--------------------------------------------------------------------------------------------------------
 void Notifier::notify(bool newState)
 {
-
-		for(int index=0; index<_delegateContainerIndex;index++)
-		{
-			_delegateContainer[index]->Invoke(newState);
-		}
+	std::vector<Delegate*>::iterator aListener =  _delegateContainer.begin() ;
+	for( aListener = _delegateContainer.begin();
+			aListener != _delegateContainer.end();
+			aListener++)
+	{
+		(*aListener)->Invoke(newState);
+	}
 }
 
 

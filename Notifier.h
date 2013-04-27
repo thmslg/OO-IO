@@ -9,12 +9,16 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
 	//! \post  None
-	explicit Notifier();
+	explicit Notifier()
+	{
+	}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
 	//! \post None
-	virtual ~Notifier();
+	virtual ~Notifier()
+	{
+	}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'subscriber' NOT NULL pointer to object where 'handler' will be called
@@ -22,7 +26,7 @@ public:
 	//!	void handler(bool newState)
 	//!	this handler will be called when event will occurs onto notifier, .
 	//! \post Object pointer and handler are stored for a futur notifying.
-	bool subscribe(Delegate * const handlerToCall);
+	void subscribe(Delegate * const delegateToInvoke);
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'newState' will be transfered to all subscriber
@@ -31,8 +35,7 @@ public:
 
 private:
 	std::vector<Delegate*> _delegateContainer;
-	int _delegateContainerSize;
-	int _delegateContainerIndex;
+//	Delegate* testdelegate;
 };
 
 #endif /* NOTIFIER_H_ */
