@@ -2,16 +2,18 @@
 #define NOTIFIER_H_
 
 #include "Delegate.h"
-//class Delegate;
+#include <vector>
 
 class Notifier {
 public:
-
-	// we can't use the operator new[] onto 5213 target
-	// problem with linking -> we have to fix the size
-	static int const maxNumberOfDelegates = 1;
-
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre None
+	//! \post  None
 	explicit Notifier();
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre None
+	//! \post None
 	virtual ~Notifier();
 
 	//--------------------------------------------------------------------------------------------------------
@@ -26,8 +28,9 @@ public:
 	//! \pre 'newState' will be transfered to all subscriber
 	//! \post All subscriber handler will be called with the new state
 	void notify(bool newState);
+
 private:
-	Delegate* _delegateContainer[maxNumberOfDelegates];
+	std::vector<Delegate*> _delegateContainer;
 	int _delegateContainerSize;
 	int _delegateContainerIndex;
 };
