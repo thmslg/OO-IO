@@ -35,7 +35,6 @@ public:
 
 private:
 	std::vector<Delegate*> _delegateContainer;
-//	Delegate* testdelegate;
 };
 
 #endif /* NOTIFIER_H_ */

@@ -3,10 +3,10 @@
 #include "../Delegate.h"
 
 
-class DummyHandlerClass
+class DummyListener
 {
 public:
-	DummyHandlerClass() :
+	DummyListener() :
 	_lastParameter(false),
 	_calledSinceLastAsk(false)
 	{
@@ -38,8 +38,8 @@ class DelegateTestSuite : public CxxTest::TestSuite
 public:
 	void testHandlerCall()
 	{
-		DummyHandlerClass handler;
-		  TypedDelegate<DummyHandlerClass> * delegate = new TypedDelegate<DummyHandlerClass>(handler,&DummyHandlerClass::handler);
+		DummyListener handler;
+		  TypedDelegate<DummyListener> * delegate = new TypedDelegate<DummyListener>(handler,&DummyListener::handler);
 		  delegate->Invoke(true);
 		  TS_ASSERT(handler.handlerCalledSinceLastAsk() == true);
 		  TS_ASSERT(handler.handlerCalledSinceLastAsk() == false);
@@ -49,8 +49,8 @@ public:
 	}
   void testParameterTransmission( void )
   {
-	  DummyHandlerClass handler;
-	  TypedDelegate<DummyHandlerClass> * delegate = new TypedDelegate<DummyHandlerClass>(handler,&DummyHandlerClass::handler);
+	  DummyListener handler;
+	  TypedDelegate<DummyListener> * delegate = new TypedDelegate<DummyListener>(handler,&DummyListener::handler);
 	  delegate->Invoke(true);
 	  TS_ASSERT(handler.lastParameterTransmitted() == true);
 	  delegate->Invoke(false);
