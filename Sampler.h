@@ -7,7 +7,6 @@
 //! This class is responsible for define an abstract view of a sampler.
 //! The responsability of a sampler is to periodically pole a set of samplable object
 //------------------------------------------------------------------------------------------------------------
-
 class Sampler{
 
 public:
@@ -49,7 +48,5 @@ public:
 	//! \post Stop sampling
 	virtual void StopSampling()=0;
 };
-
-
 
 #endif /* SAMPLER_H_ */

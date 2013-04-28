@@ -1,5 +1,6 @@
 #include "SampledInput.h"
 
+//--------------------------------------------------------------------------------------------------------
 SampledInput::SampledInput(Input & physicalInput) :
 		_physicalInputToSample(physicalInput)
 {

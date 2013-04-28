@@ -2,11 +2,11 @@
 #define DUMMYPHYSICALINPUT_H_
 
 
-class dummyPhysicalInput: public Input
+class DummyPhysicalInput: public Input
 {
 public:
 
-	dummyPhysicalInput(bool state)
+	DummyPhysicalInput(bool state)
 	{
 		_physicalState = state;
 	}
