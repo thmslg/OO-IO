@@ -5,10 +5,12 @@ env = Environment(tools = ['default', 'cxxtest'])
 testList =  [
 'DelegateBooleanParameter.t.h',
 'Notifier.t.h',
+'SampledInput.t.h',
 ]
 
 sourceList =  [
 '../Notifier.cpp',
+'../SampledInput.cpp',
 ]
 env.CxxTest('ouptputTest/delegaterunner',testList + sourceList, CXXFLAGS='-Wall -W -Wextra')
 

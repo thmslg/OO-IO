@@ -15,8 +15,12 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre "pinID" is a pin identifier
 	//! \post Object created targeting correct input pin
-	explicit SampledInput(bool logicalActiveState);
-	~SampledInput();
+	explicit SampledInput(Input & physicalInput);
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre
+	//! \post physical input reference IS NOT DELETED
+	~SampledInput(){}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre  None
@@ -28,13 +32,10 @@ public:
 	//! \post return current state, updated during last Acquire() calling.
 	//! DO NOT READ LOW LAYER
 	virtual bool GetState() const;
-	virtual void ChangeInversion(bool inversion);
 
 private:
-	//! Physical level state of this input
-	bool _physicalState;
-	//! Logical level state of this input, we can invert the signal
-	bool _isInverted;
+	Input & _physicalInputToSample;
+	bool _officialState;
 };
 
 

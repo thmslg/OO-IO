@@ -1,60 +1,49 @@
 #include "SampledInput.h"
 
-SampledInput::SampledInput(bool isInverted):
-Samplable(),
-_physicalState(isInverted),
-_isInverted(isInverted)
+SampledInput::SampledInput(Input & physicalInput) :
+		_physicalInputToSample(physicalInput)
 {
+	_officialState = _physicalInputToSample.GetState();
 }
-
-SampledInput::~SampledInput(){
-
-}
-
 
 //--------------------------------------------------------------------------------------------------------
 void SampledInput::Acquire()
 {
-	bool newState = GetState();
-	if(newState != _physicalState)
+	bool currentPhysicalState = _physicalInputToSample.GetState();
+	if(currentPhysicalState != _officialState)
 	{
-		if(_isInverted)
-		{
-			notify(!newState);
-		}
-		else
-		{
-			notify(newState);
-		}
-		_physicalState = newState;
+		_officialState = currentPhysicalState;
 	}
+//	bool newState = GetState();
+//	if (newState != _physicalState)
+//	{
+//		if (_isInverted)
+//		{
+//			notify(!newState);
+//		}
+//		else
+//		{
+//			notify(newState);
+//		}
+//		_physicalState = newState;
+//	}
 }
 
 //--------------------------------------------------------------------------------------------------------
 bool SampledInput::GetState() const
 {
-	bool logicLevel = false;
-
-	if( _isInverted)
-	{
-		logicLevel = !_physicalState;
-	}
-	else
-	{
-		logicLevel = _physicalState;
-	}
-
-	return logicLevel;
+//	bool logicLevel = false;
+//
+//	if (_isInverted)
+//	{
+//		logicLevel = !_physicalState;
+//	}
+//	else
+//	{
+//		logicLevel = _physicalState;
+//	}
+//
+//	return logicLevel;
+	return _officialState;
 }
-
-//--------------------------------------------------------------------------------------------------------
-void SampledInput::ChangeInversion(bool inversion)
-{
-	_isInverted = inversion;
-	//We force the physical state in order to generate the event.
-	_physicalState = _isInverted;
-	Acquire();
-}
-
-
 
