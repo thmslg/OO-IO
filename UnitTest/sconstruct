@@ -1,7 +1,8 @@
-# vanilla include (the 'cxxtest' would be 'CxxTest' if the file was called CxxTest.py!)
 env = Environment(tools = ['default', 'cxxtest'])
 
-#build first simple runner
+###############################################################
+# Build cxxtest
+###############################################################
 testList =  [
 'DelegateBooleanParameter.t.h',
 'Notifier.t.h',
@@ -12,7 +13,9 @@ sourceList =  [
 '../Notifier.cpp',
 '../SampledInput.cpp',
 ]
-env.CxxTest('ouptputTest/delegaterunner',testList + sourceList, CXXFLAGS='-Wall -W -Wextra')
+env.CxxTest('outputTest/delegaterunner',testList + sourceList, CXXFLAGS='-Wall -W -Wextra')
 
-#run tests
-env.Command("pouet", None,"./ouptputTest/delegaterunner")
+###############################################################
+# Run Tests
+##############################################################
+env.Command("pouet", None,"./outputTest/delegaterunner")

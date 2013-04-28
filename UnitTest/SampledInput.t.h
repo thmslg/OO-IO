@@ -3,7 +3,9 @@
 
 #include "../Input.h"
 #include "../SampledInput.h"
+
 #include "Mocks/DummyPhysicalInput.h"
+#include "Mocks/DummyListener.h"
 
 class SampledInputTest: public CxxTest::TestSuite
 {
@@ -33,6 +35,24 @@ public:
 		TS_ASSERT(sampledInput.GetState() == true);
 		sampledInput.Acquire();
 		TS_ASSERT(sampledInput.GetState() == false);
+	}
+	void testTestChangeNotify()
+	{
+		dummyPhysicalInput physicalInput(false);
+		SampledInput sampledInput(physicalInput);
+		DummyListener listener;
+		TypedDelegate<DummyListener> * delegate = new TypedDelegate<DummyListener>(listener, &DummyListener::handler);
+		sampledInput.subscribe(delegate);
+
+		physicalInput.changePhysicalState(true);
+		sampledInput.Acquire();
+		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
+		TS_ASSERT(listener.lastParameterTransmitted() == true);
+
+		physicalInput.changePhysicalState(false);
+		sampledInput.Acquire();
+		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
+		TS_ASSERT(listener.lastParameterTransmitted() == false);
 	}
 };
 
