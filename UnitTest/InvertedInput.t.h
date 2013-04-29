@@ -30,6 +30,10 @@ public:
 		physicalInput.changePhysicalState(true);
 		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(listener.lastParameterTransmitted() == false);
+
+		physicalInput.changePhysicalState(false);
+		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
+		TS_ASSERT(listener.lastParameterTransmitted() == true);
 	}
 
 };

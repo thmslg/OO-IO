@@ -42,7 +42,7 @@ void FilteredInput::inputHasChanged(bool newState)
 		_simpleTimer.disarm() ;
 		if(newState != _filteredState)
 		{
-			notify(newState);
+			notifyListeners(newState);
 			_filteredState = newState; // see GetState
 		}
 	}
@@ -51,7 +51,7 @@ void FilteredInput::inputHasChanged(bool newState)
 //------------------------------------------------------------------------------------------------------------
 void FilteredInput::timerElapsed(bool newState){
 	_filteredState = newState;
-	notify(newState);
+	notifyListeners(newState);
 }
 
 //------------------------------------------------------------------------------------------------------------

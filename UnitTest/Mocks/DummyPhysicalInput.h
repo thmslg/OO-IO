@@ -19,7 +19,7 @@ public:
 		if(_physicalState != newState)
 		{
 			_physicalState = newState;
-			notify(_physicalState);
+			notifyListeners(_physicalState);
 		}
 	}
 private:

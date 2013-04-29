@@ -14,7 +14,7 @@ void SampledInput::Acquire()
 	if(currentPhysicalState != _officialState)
 	{
 		_officialState = currentPhysicalState;
-		notify(_officialState);
+		notifyListeners(_officialState);
 	}
 }
 

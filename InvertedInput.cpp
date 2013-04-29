@@ -9,9 +9,11 @@ InvertedInput::InvertedInput(Input & inputToInvert) :
 }
 void InvertedInput::InputToInvertHasChanged(bool newSTate)
 {
-	notify(!newSTate);
+	notifyListeners(!newSTate);
 }
 bool InvertedInput::GetState() const
 {
+	// We could add an attribute in InvertedInput class as we don't know the
+	// duration of this op'.
 	return !_inputToInvert.GetState();
 }

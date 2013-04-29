@@ -7,7 +7,7 @@ void Notifier::subscribe(Delegate * const delegateToInvoke)
 }
 
 //--------------------------------------------------------------------------------------------------------
-void Notifier::notify(bool newState)
+void Notifier::notifyListeners(bool newState)
 {
 	std::vector<Delegate*>::iterator aListener =  _delegateContainer.begin() ;
 	for( aListener = _delegateContainer.begin();

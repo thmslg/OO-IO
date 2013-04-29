@@ -31,7 +31,7 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'newState' will be transfered to all subscriber
 	//! \post All subscriber handler will be called with the new state
-	void notify(bool newState);
+	void notifyListeners(bool newState);
 
 private:
 	std::vector<Delegate*> _delegateContainer;
