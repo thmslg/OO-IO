@@ -16,7 +16,11 @@ public:
 	}
 	void changePhysicalState(bool newState)
 	{
-		_physicalState = newState;
+		if(_physicalState != newState)
+		{
+			_physicalState = newState;
+			notify(_physicalState);
+		}
 	}
 private:
 	bool _physicalState;
