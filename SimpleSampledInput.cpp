@@ -1,25 +1,25 @@
-#include "SampledInput.h"
+#include "SimpleSampledInput.h"
 
 //--------------------------------------------------------------------------------------------------------
 SampledInput::SampledInput(DigitalInput & physicalInput) :
 		_inputToSample(physicalInput)
 {
-	_officialState = _inputToSample.GetState();
+	_officialCurrentState = _inputToSample.GetState();
 }
 
 //--------------------------------------------------------------------------------------------------------
 void SampledInput::Acquire()
 {
 	bool currentPhysicalState = _inputToSample.GetState();
-	if(currentPhysicalState != _officialState)
+	if(currentPhysicalState != _officialCurrentState)
 	{
-		_officialState = currentPhysicalState;
+		_officialCurrentState = currentPhysicalState;
 	}
 }
 
 //--------------------------------------------------------------------------------------------------------
 bool SampledInput::GetState() const
 {
-	return _officialState;
+	return _officialCurrentState;
 }
 

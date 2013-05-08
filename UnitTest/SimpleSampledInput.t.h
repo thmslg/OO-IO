@@ -1,13 +1,13 @@
-#ifndef SAMPLEDINPUT_T_H_
-#define SAMPLEDINPUT_T_H_
+#ifndef SIMPLESAMPLEDINPUT_T_H
+#define SIMPLESAMPLEDINPUT_T_H
 
 #include "../DigitalInput.h"
-#include "../SampledInput.h"
+#include "../SimpleSampledInput.h"
 
 #include "Mocks/DummyPhysicalInput.h"
 #include "Mocks/DummyListener.h"
 
-class SampledInputTest: public CxxTest::TestSuite
+class SimpleSampledInputTest: public CxxTest::TestSuite
 {
 public:
 	void testSimpleGetStateAtConstruction()
@@ -38,26 +38,6 @@ public:
 		sampledInput.Acquire();
 		TS_ASSERT(sampledInput.GetState() == false);
 	}
-
-//	void testTestChangeNotify()
-//	{
-//		DummyPhysicalInput physicalInput(false);
-//		SampledInput sampledInput(physicalInput);
-//		DummyListener listener;
-//		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
-//				DummyListener>(listener, &DummyListener::handler);
-//		sampledInput.subscribe(delegate);
-//
-//		physicalInput.changePhysicalState(true);
-//		sampledInput.Acquire();
-//		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
-//		TS_ASSERT(listener.lastParameterTransmitted() == true);
-//
-//		physicalInput.changePhysicalState(false);
-//		sampledInput.Acquire();
-//		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
-//		TS_ASSERT(listener.lastParameterTransmitted() == false);
-//	}
 };
 
-#endif /* SAMPLEDINPUT_T_H_ */
+#endif /* SIMPLESAMPLEDINPUT_T_H */
