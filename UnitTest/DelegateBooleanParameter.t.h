@@ -1,6 +1,6 @@
 #include <cxxtest/TestSuite.h>
 
-#include "../Delegate.h"
+#include "../DelegateBooleanParameter.h"
 #include "Mocks/DummyListener.h"
 
 class DelegateTestSuite: public CxxTest::TestSuite
@@ -9,7 +9,7 @@ public:
 	void testHandlerCall()
 	{
 		DummyListener handler;
-		TypedDelegate<DummyListener> * delegate = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
 				DummyListener>(handler, &DummyListener::handler);
 		delegate->Invoke(true);
 		TS_ASSERT(handler.handlerCalledSinceLastAsk() == true);
@@ -21,7 +21,7 @@ public:
 	void testParameterTransmission(void)
 	{
 		DummyListener handler;
-		TypedDelegate<DummyListener> * delegate = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
 				DummyListener>(handler, &DummyListener::handler);
 		delegate->Invoke(true);
 		TS_ASSERT(handler.lastParameterTransmitted() == true);

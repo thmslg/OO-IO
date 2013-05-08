@@ -1,7 +1,7 @@
 #ifndef NOTIFIER_H_
 #define NOTIFIER_H_
 
-#include "Delegate.h"
+#include "DelegateBooleanParameter.h"
 #include <vector>
 
 class Notifier {
@@ -26,7 +26,7 @@ public:
 	//!	void handler(bool newState)
 	//!	this handler will be called when event will occurs onto notifier, .
 	//! \post Object pointer and handler are stored for a futur notifying.
-	void subscribe(Delegate * const delegateToInvoke);
+	void subscribe(DelegateBooleanParameter * const delegateToInvoke);
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'newState' will be transfered to all subscriber
@@ -34,7 +34,7 @@ public:
 	void notifyListeners(bool newState);
 
 private:
-	std::vector<Delegate*> _delegateContainer;
+	std::vector<DelegateBooleanParameter*> _delegateContainer;
 };
 
 #endif /* NOTIFIER_H_ */
