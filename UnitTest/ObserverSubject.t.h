@@ -1,5 +1,5 @@
-#include "../Delegate.h"
-#include "../Notifier.h"
+#include "../DelegateBooleanParameter.h"
+#include "../ObserverSubject.h"
 #include "Mocks/DummyListener.h"
 
 class NotifierSuite: public CxxTest::TestSuite
@@ -8,13 +8,13 @@ public:
 	void testListener(void)
 	{
 		DummyListener dummyListener;
-		TypedDelegate<DummyListener> * delegate = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListener, &DummyListener::handler);
-		Notifier notifier;
+		ObserverSubject notifier;
 		notifier.subscribe(delegate);
-		notifier.notifyListeners(true);
+		notifier.notifyObserver(true);
 		TS_ASSERT(dummyListener.handlerCalledSinceLastAsk() == true);
-		notifier.notifyListeners(false);
+		notifier.notifyObserver(false);
 		TS_ASSERT(dummyListener.handlerCalledSinceLastAsk() == true);
 
 	}
@@ -22,13 +22,13 @@ public:
 	void testParameterTransmission(void)
 	{
 		DummyListener dummyListener;
-		TypedDelegate<DummyListener> * delegate = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListener, &DummyListener::handler);
-		Notifier notifier;
+		ObserverSubject notifier;
 		notifier.subscribe(delegate);
-		notifier.notifyListeners(true);
+		notifier.notifyObserver(true);
 		TS_ASSERT(dummyListener.lastParameterTransmitted() == true);
-		notifier.notifyListeners(false);
+		notifier.notifyObserver(false);
 		TS_ASSERT(dummyListener.lastParameterTransmitted() == false);
 
 	}
@@ -36,21 +36,21 @@ public:
 	void testMultipleListeners(void)
 	{
 		DummyListener dummyListenerA;
-		TypedDelegate<DummyListener> * delegateA = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegateA = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListenerA, &DummyListener::handler);
 
 		DummyListener dummyListenerB;
-		TypedDelegate<DummyListener> * delegateB = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegateB = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListenerB, &DummyListener::handler);
-		Notifier notifier;
+		ObserverSubject notifier;
 		notifier.subscribe(delegateA);
 		notifier.subscribe(delegateB);
 
-		notifier.notifyListeners(true);
+		notifier.notifyObserver(true);
 		TS_ASSERT(dummyListenerA.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(dummyListenerB.handlerCalledSinceLastAsk() == true);
 
-		notifier.notifyListeners(false);
+		notifier.notifyObserver(false);
 		TS_ASSERT(dummyListenerA.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(dummyListenerB.handlerCalledSinceLastAsk() == true);
 
@@ -59,21 +59,21 @@ public:
 	void testMultipleListenersParameterTransmission(void)
 	{
 		DummyListener dummyListenerA;
-		TypedDelegate<DummyListener> * delegateA = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegateA = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListenerA, &DummyListener::handler);
 
 		DummyListener dummyListenerB;
-		TypedDelegate<DummyListener> * delegateB = new TypedDelegate<
+		TypedDelegateBooleanParameter<DummyListener> * delegateB = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListenerB, &DummyListener::handler);
-		Notifier notifier;
+		ObserverSubject notifier;
 		notifier.subscribe(delegateA);
 		notifier.subscribe(delegateB);
 
-		notifier.notifyListeners(true);
+		notifier.notifyObserver(true);
 		TS_ASSERT(dummyListenerA.lastParameterTransmitted() == true);
 		TS_ASSERT(dummyListenerB.lastParameterTransmitted() == true);
 
-		notifier.notifyListeners(false);
+		notifier.notifyObserver(false);
 		TS_ASSERT(dummyListenerA.lastParameterTransmitted() == false);
 		TS_ASSERT(dummyListenerB.lastParameterTransmitted() == false);
 

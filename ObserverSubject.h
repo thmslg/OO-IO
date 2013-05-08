@@ -1,22 +1,22 @@
 #ifndef NOTIFIER_H_
 #define NOTIFIER_H_
 
-#include "DelegateBooleanParameter.h"
-#include <vector>
+#include "DelegateBooleanParameter.h" // to notify observers.
+#include <vector> // to store observers
 
-class Notifier {
+class ObserverSubject {
 public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
 	//! \post  None
-	explicit Notifier()
+	explicit ObserverSubject()
 	{
 	}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
 	//! \post None
-	virtual ~Notifier()
+	virtual ~ObserverSubject()
 	{
 	}
 
@@ -31,10 +31,10 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'newState' will be transfered to all subscriber
 	//! \post All subscriber handler will be called with the new state
-	void notifyListeners(bool newState);
+	void notifyObserver(bool newState);
 
 private:
-	std::vector<DelegateBooleanParameter*> _delegateContainer;
+	std::vector<DelegateBooleanParameter*> _observerList;
 };
 
 #endif /* NOTIFIER_H_ */

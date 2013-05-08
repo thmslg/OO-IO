@@ -5,13 +5,13 @@ env = Environment(tools = ['default', 'cxxtest'])
 ###############################################################
 testList =  [
 'DelegateBooleanParameter.t.h',
-'Notifier.t.h',
+'ObserverSubject.t.h',
 #'SampledInput.t.h',
 #'InvertedInput.t.h',
 ]
 
 sourceList =  [
-'../Notifier.cpp',
+'../ObserverSubject.cpp',
 #'../SampledInput.cpp',
 #'../InvertedInput.cpp',
 ]
