@@ -14,8 +14,9 @@ class SampledInput: public Samplable,
 					public DigitalInput{
 public:
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre "pinID" is a pin identifier
-	//! \post Object created targeting correct input pin
+	//! \pre "physicalInput" is the input we want to sample. GetState on this input should be possible
+	//! immediately.
+	//! \post None
 	explicit SampledInput(DigitalInput & physicalInput);
 
 	//--------------------------------------------------------------------------------------------------------
@@ -25,18 +26,21 @@ public:
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre  None
-	//! \post update current state, reading low layer
+	//! \post update current state, reading low layer.
+	//! Should be long return as we will aske the input to sample.
 	virtual void Acquire();
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
-	//! \post return current state, updated during last Acquire() calling.
+	//! \post return official current state
 	//! DO NOT READ LOW LAYER
+	//! Really fast return as it's a simple accessor.
 	virtual bool GetState() const;
 
 private:
-	DigitalInput & _physicalInputToSample;
-	bool _officialState;
+	DigitalInput & _inputToSample;
+	//we store the "official" current state, instate interrogate each time needed _inputToSample.
+	bool _officialCurrentState;
 };
 
 
