@@ -1,7 +1,7 @@
 #include "SampledInput.h"
 
 //--------------------------------------------------------------------------------------------------------
-SampledInput::SampledInput(Input & physicalInput) :
+SampledInput::SampledInput(DigitalInput & physicalInput) :
 		_physicalInputToSample(physicalInput)
 {
 	_officialState = _physicalInputToSample.GetState();
@@ -14,7 +14,6 @@ void SampledInput::Acquire()
 	if(currentPhysicalState != _officialState)
 	{
 		_officialState = currentPhysicalState;
-		notifyListeners(_officialState);
 	}
 }
 

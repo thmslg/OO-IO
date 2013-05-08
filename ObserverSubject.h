@@ -10,24 +10,14 @@
 //! This implementation avoid you to inherit a lot of interface. To subscribe to the subject you only
 //! have to subscribe with a particular signature method.
 //!
-//! For example his implementation is more understandable for me when you have to observe a lot of different
+//! For example his implementation is more understandable (for me) when you have to observe a lot of different
 //! Inputs !
 class ObserverSubject {
 public:
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre None
-	//! \post  None
-	//! avoid copy
-	explicit ObserverSubject()
-	{
-	}
-
+	explicit ObserverSubject()	{}
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre None
-	//! \post None
-	virtual ~ObserverSubject()
-	{
-	}
+	virtual ~ObserverSubject()	{}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'subscriber' NOT NULL pointer to object where 'handler' will be called

@@ -16,27 +16,7 @@ public:
 	//! \pre  /!\Sampling should be stopped
 	//!	"SamplableToAdd" have to be ready to call "acquire" method, have to be thread safe
 	//! \post Add reference to Samplable instance
-	virtual bool AddSlowFrequencySamplable(Samplable * SamplableToAdd) = 0;
-
-	//------------------------------------------------------------------------------------------------------------
-	//! \pre  /!\Sampling should be stopped
-	//!	"SamplableToAdd" have to be ready to call "acquire()" method, have to be thread safe
-	//! \post Return true if operation succeed,
-	//! 	return false else.
-	virtual bool RemoveSlowFrequencySamplable(Samplable * SamplableToAdd)=0;
-
-	//------------------------------------------------------------------------------------------------------------
-	//! \pre /!\ Sampling should be stopped
-	//!	"SamplableToAdd" have to be ready to call "acquire" method, have to be thread safe
-	//! \post See parent
-	virtual bool AddHighFrequencySamplable(Samplable * SamplableToAdd)=0;
-
-	//------------------------------------------------------------------------------------------------------------
-	//! \pre /!\ Sampling should be stopped
-	//!	"SamplableToAdd" have to be ready to call "acquire()" method, have to be thread safe
-	//! \post Return true if operation succeed,
-	//! 	return false else.
-	virtual bool RemoveHighFrequencySamplable(Samplable * SamplableToAdd)=0;
+	virtual bool AddSamplable(Samplable * SamplableToAdd) = 0;
 
 	//------------------------------------------------------------------------------------------------------------
 	//! \pre None
