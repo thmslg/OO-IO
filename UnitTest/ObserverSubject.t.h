@@ -12,9 +12,9 @@ public:
 				DummyListener>(dummyListener, &DummyListener::handler);
 		ObserverSubject notifier;
 		notifier.subscribe(delegate);
-		notifier.notifyObserver(true);
+		notifier.notifyObservers(true);
 		TS_ASSERT(dummyListener.handlerCalledSinceLastAsk() == true);
-		notifier.notifyObserver(false);
+		notifier.notifyObservers(false);
 		TS_ASSERT(dummyListener.handlerCalledSinceLastAsk() == true);
 
 	}
@@ -26,9 +26,9 @@ public:
 				DummyListener>(dummyListener, &DummyListener::handler);
 		ObserverSubject notifier;
 		notifier.subscribe(delegate);
-		notifier.notifyObserver(true);
+		notifier.notifyObservers(true);
 		TS_ASSERT(dummyListener.lastParameterTransmitted() == true);
-		notifier.notifyObserver(false);
+		notifier.notifyObservers(false);
 		TS_ASSERT(dummyListener.lastParameterTransmitted() == false);
 
 	}
@@ -46,11 +46,11 @@ public:
 		notifier.subscribe(delegateA);
 		notifier.subscribe(delegateB);
 
-		notifier.notifyObserver(true);
+		notifier.notifyObservers(true);
 		TS_ASSERT(dummyListenerA.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(dummyListenerB.handlerCalledSinceLastAsk() == true);
 
-		notifier.notifyObserver(false);
+		notifier.notifyObservers(false);
 		TS_ASSERT(dummyListenerA.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(dummyListenerB.handlerCalledSinceLastAsk() == true);
 
@@ -69,11 +69,11 @@ public:
 		notifier.subscribe(delegateA);
 		notifier.subscribe(delegateB);
 
-		notifier.notifyObserver(true);
+		notifier.notifyObservers(true);
 		TS_ASSERT(dummyListenerA.lastParameterTransmitted() == true);
 		TS_ASSERT(dummyListenerB.lastParameterTransmitted() == true);
 
-		notifier.notifyObserver(false);
+		notifier.notifyObservers(false);
 		TS_ASSERT(dummyListenerA.lastParameterTransmitted() == false);
 		TS_ASSERT(dummyListenerB.lastParameterTransmitted() == false);
 
