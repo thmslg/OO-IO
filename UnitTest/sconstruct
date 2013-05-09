@@ -6,16 +6,14 @@ env = Environment(tools = ['default', 'cxxtest'])
 testList =  [
 'DelegateBooleanParameter.t.h',
 'ObserverSubject.t.h',
-'SimpleSampledInput.t.h',
 'ListenableSampledInput.t.h',
-#'InvertedInput.t.h',
+'InvertedListenableSampledInput.t.h',
 ]
 
 sourceList =  [
 '../ListenerSubject.cpp',
-'../SimpleSampledInput.cpp',
 '../ListenableSampledInput.cpp',
-#'../InvertedInput.cpp',
+'../InvertedListenableSampledInput.cpp',
 ]
 env.CxxTest('outputTest/delegaterunner',testList + sourceList, CXXFLAGS='-Wall -W -Wextra')
 

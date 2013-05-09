@@ -1,9 +1,7 @@
 #ifndef DUMMYPHYSICALINPUT_H_
-#define DUMMYPHYSICALINPUT_H_
+#define DUMMYPHYSICALINPUT_H
 
-#include "../ListenerSubject.h"
-
-class DummyPhysicalInput: public DigitalInput, protected ListenerSubject
+class DummyPhysicalInput: public DigitalInput
 {
 public:
 
@@ -20,7 +18,6 @@ public:
 		if(_physicalState != newState)
 		{
 			_physicalState = newState;
-			notifyListeners(_physicalState);
 		}
 	}
 private:

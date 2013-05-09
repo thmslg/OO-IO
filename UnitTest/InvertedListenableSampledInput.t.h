@@ -1,7 +1,9 @@
 #ifndef INPUTINVERT_T_H_
 #define INPUTINVERT_T_H_
 
-#include "../InvertedInput.h"
+#include "../InvertedListenableSampledInput.h"
+#include "../ListenableSampledInput.h"
+
 #include "Mocks/DummyPhysicalInput.h"
 #include "Mocks/DummyListener.h"
 
@@ -11,27 +13,34 @@ public:
 	void testInstanciation(void)
 	{
 		DummyPhysicalInput physicalInput(false);
-		InvertedInput invertedInput(physicalInput);
+		ListenableSampledInput inputToInvert(physicalInput);
+		InvertedListenableSampledInput invertedInput(inputToInvert);
 		TS_ASSERT(invertedInput.GetState() == true);
 
 		DummyPhysicalInput physicalInput2(true);
-		InvertedInput invertedInput2(physicalInput2);
+		ListenableSampledInput inputToInvert2(physicalInput2);
+		InvertedListenableSampledInput invertedInput2(inputToInvert2);
 		TS_ASSERT(invertedInput2.GetState() == false);
 	}
 
-	void testTestChangeNotify()
+	void testInvertedNotify()
 	{
-		DummyPhysicalInput physicalInput(false);
+
 		DummyListener listener;
-		TypedDelegate<DummyListener> * delegate = new TypedDelegate<
-				DummyListener>(listener, &DummyListener::handler);
-		InvertedInput invertedInput(physicalInput);
-		invertedInput.subscribe(delegate);
+		TypedDelegateBooleanParameter<DummyListener> delegate(listener, &DummyListener::handler);
+
+		DummyPhysicalInput physicalInput(false);
+		ListenableSampledInput sampledInput(physicalInput);
+		InvertedListenableSampledInput invertedInput(sampledInput);
+		invertedInput.addListener(delegate);
 		physicalInput.changePhysicalState(true);
+		sampledInput.Acquire();
+
 		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(listener.lastParameterTransmitted() == false);
 
 		physicalInput.changePhysicalState(false);
+		sampledInput.Acquire();
 		TS_ASSERT(listener.handlerCalledSinceLastAsk() == true);
 		TS_ASSERT(listener.lastParameterTransmitted() == true);
 	}

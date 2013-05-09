@@ -4,15 +4,15 @@
 //--------------------------------------------------------------------------------------------------------
 void ListenerSubject::subscribe(DelegateBooleanParameter * const delegateToInvoke)
 {
-	_observerList.push_back(delegateToInvoke);
+	_listenerList.push_back(delegateToInvoke);
 }
 
 //--------------------------------------------------------------------------------------------------------
 void ListenerSubject::notifyListeners(bool newState)
 {
-	std::vector<DelegateBooleanParameter*>::iterator aListener =  _observerList.begin() ;
-	for( aListener = _observerList.begin();
-			aListener != _observerList.end();
+	std::vector<DelegateBooleanParameter*>::iterator aListener =  _listenerList.begin() ;
+	for( aListener = _listenerList.begin();
+			aListener != _listenerList.end();
 			aListener++)
 	{
 		(*aListener)->Invoke(newState);

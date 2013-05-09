@@ -1,7 +1,7 @@
 #ifndef LISTENERSUBJECT_H_
 #define LISTENERSUBJECT_H_
 
-#include <vector> // to store observers
+#include <vector> // to store listeners
 
 //Forward declaration
 class DelegateBooleanParameter;
@@ -35,7 +35,7 @@ public:
 private:
 
 	//!	Theses handlers will be called when notifyObserver( newState) will be called .
-	std::vector<DelegateBooleanParameter*> _observerList;
+	std::vector<DelegateBooleanParameter*> _listenerList;
 };
 
 #endif /* LISTENERSUBJECT_H_ */
