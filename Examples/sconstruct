@@ -1,0 +1,6 @@
+env = Environment()
+env.Append(CPPFLAGS=['-Wall','-g'])
+sources = [
+'main.cpp'
+] 
+env.Program('example', sources )
