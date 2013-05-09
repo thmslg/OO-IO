@@ -1,8 +1,10 @@
 #ifndef NOTIFIER_H_
 #define NOTIFIER_H_
 
-#include "DelegateBooleanParameter.h" // to notify observers.
 #include <vector> // to store observers
+
+//Forward declaration
+class DelegateBooleanParameter;
 
 //--------------------------------------------------------------------------------------------------------
 //! This class is responsible to notify observers, previously subscribed to it.

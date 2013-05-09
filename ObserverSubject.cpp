@@ -1,4 +1,5 @@
 #include "ObserverSubject.h"
+#include "DelegateBooleanParameter.h" // to notify observers.
 
 //--------------------------------------------------------------------------------------------------------
 void ObserverSubject::subscribe(DelegateBooleanParameter * const delegateToInvoke)

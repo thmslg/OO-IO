@@ -13,18 +13,18 @@ public:
 	void testSimpleGetStateAtConstruction()
 	{
 		DummyPhysicalInput physicalInput(false);
-		SampledInput sampledInput(physicalInput);
+		SimpleSampledInput sampledInput(physicalInput);
 		TS_ASSERT(sampledInput.GetState() == false);
 
 		DummyPhysicalInput physicalInput2(true);
-		SampledInput sampledInput2(physicalInput2);
+		SimpleSampledInput sampledInput2(physicalInput2);
 		TS_ASSERT(sampledInput2.GetState() == true);
 	}
 
 	void testSimpleAcquirement()
 	{
 		DummyPhysicalInput physicalInput(false);
-		SampledInput sampledInput(physicalInput);
+		SimpleSampledInput sampledInput(physicalInput);
 
 		//Low to high
 		physicalInput.changePhysicalState(true);

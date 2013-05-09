@@ -10,24 +10,24 @@
 //! The class SampledInput is responsible for hardware input representation.
 //! It's the most updated view of the hardware input
 //------------------------------------------------------------------------------------------------------------
-class SampledInput: public Samplable,
+class SimpleSampledInput: public Samplable,
 					public DigitalInput{
 public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre "physicalInput" is the input we want to sample. GetState on this input should be possible
 	//! immediately.
 	//! \post None
-	explicit SampledInput(DigitalInput & physicalInput);
+	explicit SimpleSampledInput(DigitalInput & physicalInput);
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre
 	//! \post physical input reference IS NOT DELETED
-	~SampledInput(){}
+	~SimpleSampledInput(){}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre  None
 	//! \post update current state, reading low layer.
-	//! Should be long return as we will aske the input to sample.
+	//! Should be long return as we will ask the input to sample.
 	virtual void Acquire();
 
 	//--------------------------------------------------------------------------------------------------------
