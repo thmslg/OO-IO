@@ -7,14 +7,14 @@ testList =  [
 'DelegateBooleanParameter.t.h',
 'ObserverSubject.t.h',
 'SimpleSampledInput.t.h',
-#'ObservableSampledInput.t.h',
+#'ListenableSampledInput.t.h',
 #'InvertedInput.t.h',
 ]
 
 sourceList =  [
 '../ListenerSubject.cpp',
 '../SimpleSampledInput.cpp',
-#'../ObservableSampledInput.cpp',
+#'../ListenableSampledInput.cpp',
 #'../InvertedInput.cpp',
 ]
 env.CxxTest('outputTest/delegaterunner',testList + sourceList, CXXFLAGS='-Wall -W -Wextra')

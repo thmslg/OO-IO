@@ -7,24 +7,24 @@
 #include "Mocks/DummyPhysicalInput.h"
 #include "Mocks/DummyListener.h"
 
-class ObservableInputTest: public CxxTest::TestSuite
+class ListenableSampledInputTest: public CxxTest::TestSuite
 {
 public:
 	void testSimpleGetStateAtConstruction()
 	{
 		DummyPhysicalInput physicalInput(false);
-		ObservableSampledInput input(physicalInput);
+		ListenableSampledInput input(physicalInput);
 		TS_ASSERT(input.GetState() == false);
 
 		DummyPhysicalInput physicalInput2(true);
-		ObservableSampledInput sampledInput2(physicalInput2);
+		ListenableSampledInput sampledInput2(physicalInput2);
 		TS_ASSERT(sampledInput2.GetState() == true);
 	}
 
 	void testSimpleAcquirement()
 	{
 		DummyPhysicalInput physicalInput(false);
-		ObservableSampledInput input(physicalInput);
+		ListenableSampledInput input(physicalInput);
 
 		//Low to high
 		physicalInput.changePhysicalState(true);
@@ -42,10 +42,10 @@ public:
 	void testObservaiblity()
 	{
 		DummyPhysicalInput physicalInput(false);
-		ObservableSampledInput input(physicalInput);
+		ListenableSampledInput input(physicalInput);
 		DummyListener observer;
 		TypedDelegateBooleanParameter<DummyListener> handler(observer, &DummyListener::handler);
-		input.addObserver(handler);
+		input.addListener(handler);
 
 	}
 };
