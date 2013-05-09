@@ -20,7 +20,7 @@ public:
 		if(_physicalState != newState)
 		{
 			_physicalState = newState;
-			notifyObservers(_physicalState);
+			notifyListeners(_physicalState);
 		}
 	}
 private:

@@ -8,7 +8,7 @@ void ListenerSubject::subscribe(DelegateBooleanParameter * const delegateToInvok
 }
 
 //--------------------------------------------------------------------------------------------------------
-void ListenerSubject::notifyObservers(bool newState)
+void ListenerSubject::notifyListeners(bool newState)
 {
 	std::vector<DelegateBooleanParameter*>::iterator aListener =  _observerList.begin() ;
 	for( aListener = _observerList.begin();
