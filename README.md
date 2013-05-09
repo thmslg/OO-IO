@@ -1,12 +1,5 @@
 OO-IO
 
-=====
-Prerequisite:
-It will help you to understand some concept before using it :
-- the listener pattern
-- the delegate mechanism
-
-Wikipedia is your friend as a first step !
 
 =====
 A simple Oriented Object - Input Output library.
@@ -17,14 +10,22 @@ A lot of design exists, this one is using delegate and is build for :
 - offer an interface to be SOLID compliant
 
 =====
+Prerequisite:
+It will help you to understand some concept before using it :
+- the listener pattern
+- the delegate mechanism
+
+Wikipedia is your friend as a first step !
+
+=====
 Example:
 See Example folder ! It will help you.
 For finest analyse, you can take a look on unitTest.
 
 =====
 Command :
-build library -> $(workingdirectory)/scons
-build and run tests -> $(workingdirectory)/UnitTest/scons
+ - build library -> $(workingdirectory)/scons
+ - build and run tests -> $(workingdirectory)/UnitTest/scons
 
 =====
 Environnment :
