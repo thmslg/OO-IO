@@ -39,15 +39,26 @@ public:
 		TS_ASSERT(input.GetState() == false);
 	}
 
-	void testObservaiblity()
+	void testListenability()
 	{
 		DummyPhysicalInput physicalInput(false);
 		ListenableSampledInput input(physicalInput);
-		DummyListener observer;
+		DummyListener listener;
 		TypedDelegateBooleanParameter<DummyListener> * const handler =
-				new TypedDelegateBooleanParameter<DummyListener>(observer, &DummyListener::handler);
+				new TypedDelegateBooleanParameter<DummyListener>(listener, &DummyListener::handler);
 		input.addListener(handler);
 
+		//Low to high
+		physicalInput.changePhysicalState(true);
+		input.Acquire();
+		TS_ASSERT(listener.handlerCalledSinceLastAsk());
+		TS_ASSERT(listener.lastParameterTransmitted() == true);
+
+		//High to low
+		physicalInput.changePhysicalState(false);
+		input.Acquire();
+		TS_ASSERT(listener.handlerCalledSinceLastAsk());
+		TS_ASSERT(listener.lastParameterTransmitted() == false);
 	}
 };
 

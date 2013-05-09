@@ -27,7 +27,7 @@ void ListenableSampledInput::Acquire()
 	if(_currentOfficialState != _inputToSample.GetState())
 	{
 		_currentOfficialState = _inputToSample.GetState();
-		//Notify
+		_notifier->notifyListeners(_currentOfficialState);
 	}
 }
 
