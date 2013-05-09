@@ -23,7 +23,7 @@ public:
 	//! 	Should not be already armed ! Ask "IsArmed" to know !
 	//! \post FilterTimer armed ! handlerWhenTimerElapsed will be call in timeoutDelayInMs !
 	//! 		Assert will be launched if already armed before !!
-	virtual void arm(int timeoutDelayInMs, Delegate *handlerWhenTimerElapsed, bool NewStateToTransmit) = 0;
+	virtual void arm(int timeoutDelayInMs, DelegateBooleanParameter *handlerWhenTimerElapsed, bool NewStateToTransmit) = 0;
 
 	//------------------------------------------------------------------------------------------------------------
 	//! \pre none

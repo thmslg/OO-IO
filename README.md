@@ -4,7 +4,7 @@ OO-IO
 =====
 A simple Oriented Object - Input Output library.
 We want to obtain a powerfull abstraction of input/output.
-A lot of design exists, this one is using delegate and is build for :
+A lot of designs exist, this one is using delegate and is build for :
 - obtain a fast listener mechanism (delegate)
 - the input user can simply use A LOT of it (to subscribe you don't need to inherit to a boring interface)
 - offer an interface to be SOLID compliant

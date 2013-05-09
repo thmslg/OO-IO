@@ -4,7 +4,7 @@
 #include "SimpleTimer.h"
 
 //------------------------------------------------------------------------------------------------------------
-FilteredInput::FilteredInput(Input & inputToFilter,
+FilteredInput::FilteredInput(DigitalInput & inputToFilter,
 							int filteringTime,
 							bool filteredActiveState,
 							SimpleTimer & timer):

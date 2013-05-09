@@ -1,4 +1,4 @@
-#include "InvertedListenableSampledInput.h"
+#include "../InvertedListenableSampledInput.h"
 
 //--------------------------------------------------------------------------------------------------------
 InvertedListenableSampledInput::InvertedListenableSampledInput(ListenableSampledInput & inputToInvert) :

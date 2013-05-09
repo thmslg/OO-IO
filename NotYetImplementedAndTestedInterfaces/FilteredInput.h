@@ -4,7 +4,7 @@
 #include "Input.h"
 class SimpleTimer;
 
-class FilteredInput : public Input {
+class FilteredInput : public DigitalInput {
 public:
 	//------------------------------------------------------------------------------------------------------------
 	//! \pre "inputToFilter" Pointer to input to filter
@@ -12,7 +12,7 @@ public:
 	//!		"filteredActiveState" edge where filter will be applied
 	//!		"timer" pointer to timer to use
 	//! \post None
-	explicit FilteredInput(Input & inputToFilter,
+	explicit FilteredInput(DigitalInput & inputToFilter,
 							int filteringTime,
 							bool filteredActiveState,
 							SimpleTimer & timer);
@@ -38,13 +38,13 @@ private:
 	void timerElapsed(bool newState);
 
 //	// pointer to input to filter
-	Input & _inputToFilter;
+	DigitalInput & _inputToFilter;
 //
 //	//timer used for filtering
 	SimpleTimer & _simpleTimer;
 
 //	// Delegate used for input subscribing
-	TypedDelegate<FilteredInput> _inputDelegate;
+	TypedDelegateBooleanParameter<FilteredInput> _inputDelegate;
 
 	// current state of the filtered input
 	bool _filteredState;
@@ -56,7 +56,7 @@ private:
 	bool _ActiveState;
 
 //	// delegate to transmit to the timer
-	TypedDelegate<FilteredInput> _simpleTimerDelegate;
+	TypedDelegateBooleanParameter<FilteredInput> _simpleTimerDelegate;
 };
 
 #endif /* FILTEREDINPUT_H_ */
