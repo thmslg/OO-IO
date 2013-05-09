@@ -1,8 +1,5 @@
-OO-IO
-
-
-=====
-A simple Oriented Object - Input Output library.
+# OO-IO
+# A simple Oriented Object - Input Output library.
 We want to obtain a powerfull abstraction of input/output.
 A lot of designs exist, this one is using delegate and is build for :
 - obtain a fast listener mechanism (delegate)
@@ -10,7 +7,7 @@ A lot of designs exist, this one is using delegate and is build for :
 - offer an interface to be SOLID compliant
 
 =====
-Prerequisite:
+# Prerequisite:
 It will help you to understand some concept before using it :
 - the listener pattern
 - the delegate mechanism
@@ -18,17 +15,16 @@ It will help you to understand some concept before using it :
 Wikipedia is your friend as a first step !
 
 =====
-Example:
-See Example folder ! It will help you.
-For finest analyse, you can take a look on unitTest.
+# Example:
+First you can take a look on unitTest.
 
 =====
-Command :
+# Command :
  - build library -> $(workingdirectory)/scons
  - build and run tests -> $(workingdirectory)/UnitTest/scons
 
 =====
-Environnment :
+# Environnment :
 -> scons and cxxtest needed.
 -> Eclipse project (Juno SR2, CDT 8).
 
