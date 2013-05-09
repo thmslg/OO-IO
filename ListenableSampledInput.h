@@ -13,7 +13,7 @@ class ListenableSampledInput: public Samplable, public DigitalInput
 public:
 	ListenableSampledInput(DigitalInput & inputToSample);
 
-	virtual ~ListenableSampledInput(){}
+	virtual ~ListenableSampledInput();
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre See base class DigitalInput
 	//! \post See base class DigitalInput
@@ -25,11 +25,11 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre
 	//! \post
-	void addListener(DelegateBooleanParameter & observerHandler);
+	void addListener(DelegateBooleanParameter * const observerHandler);
 private:
 	DigitalInput & _inputToSample;
 	bool _currentOfficialState;
-	ListenerSubject _notifier;
+	ListenerSubject * const _notifier;
 };
 
 #endif /* LISTENABLESAMPLEDINPUT_H_ */

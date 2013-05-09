@@ -1,14 +1,20 @@
-#include "ObservableSampledInput.h"
-#include "ObserverSubject.h"
+#include "ListenableSampledInput.h"
+#include "ListenerSubject.h"
 #include "DelegateBooleanParameter.h"
 
 
 //--------------------------------------------------------------------------------------------------------
 ListenableSampledInput::ListenableSampledInput(DigitalInput & inputToSample):
 _inputToSample(inputToSample),
-_currentOfficialState(_inputToSample.GetState())
+_currentOfficialState(_inputToSample.GetState()),
+_notifier(new ListenerSubject())
 {}
 
+//--------------------------------------------------------------------------------------------------------
+ListenableSampledInput::~ListenableSampledInput()
+{
+	delete _notifier;
+}
 //--------------------------------------------------------------------------------------------------------
 bool ListenableSampledInput::GetState() const
 {
@@ -26,7 +32,7 @@ void ListenableSampledInput::Acquire()
 }
 
 //--------------------------------------------------------------------------------------------------------
-void ListenableSampledInput::addListener(DelegateBooleanParameter & observerHandler)
+void ListenableSampledInput::addListener(DelegateBooleanParameter * const observerHandler)
 {
-
+	_notifier->subscribe(observerHandler);
 }

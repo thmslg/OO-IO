@@ -1,7 +1,7 @@
 #ifndef OBSERVABLESAMPLEDINPUT_T_H_
 #define OBSERVABLESAMPLEDINPUT_T_H_
 
-#include "../ObservableSampledInput.h"
+#include "../ListenableSampledInput.h"
 #include "../DelegateBooleanParameter.h"
 
 #include "Mocks/DummyPhysicalInput.h"
@@ -44,7 +44,8 @@ public:
 		DummyPhysicalInput physicalInput(false);
 		ListenableSampledInput input(physicalInput);
 		DummyListener observer;
-		TypedDelegateBooleanParameter<DummyListener> handler(observer, &DummyListener::handler);
+		TypedDelegateBooleanParameter<DummyListener> * const handler =
+				new TypedDelegateBooleanParameter<DummyListener>(observer, &DummyListener::handler);
 		input.addListener(handler);
 
 	}
