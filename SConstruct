@@ -1,0 +1,1 @@
+SConscript('SConscript', variant_dir='Install', duplicate=0)
