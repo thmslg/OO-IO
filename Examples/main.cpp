@@ -16,7 +16,7 @@ int main() {
 	unsigned short sequenceSize = sizeof(sequence);
 	HardwareDigitalInputEmulator emulatedInput(sequence,sequenceSize);
 
-	//build dummmy listener and associated delegate
+	//build dummy listener and associated delegate
 	ListenerTracer tracer;
 	TypedDelegateBooleanParameter<ListenerTracer> handlerToTracer(tracer,&ListenerTracer::InputToTraceHasChanged);
 
