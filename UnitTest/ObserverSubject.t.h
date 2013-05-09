@@ -1,5 +1,5 @@
 #include "../DelegateBooleanParameter.h"
-#include "../ObserverSubject.h"
+#include "../ListenerSubject.h"
 #include "Mocks/DummyListener.h"
 
 class NotifierSuite: public CxxTest::TestSuite
@@ -10,7 +10,7 @@ public:
 		DummyListener dummyListener;
 		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListener, &DummyListener::handler);
-		ObserverSubject notifier;
+		ListenerSubject notifier;
 		notifier.subscribe(delegate);
 		notifier.notifyObservers(true);
 		TS_ASSERT(dummyListener.handlerCalledSinceLastAsk() == true);
@@ -24,7 +24,7 @@ public:
 		DummyListener dummyListener;
 		TypedDelegateBooleanParameter<DummyListener> * delegate = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListener, &DummyListener::handler);
-		ObserverSubject notifier;
+		ListenerSubject notifier;
 		notifier.subscribe(delegate);
 		notifier.notifyObservers(true);
 		TS_ASSERT(dummyListener.lastParameterTransmitted() == true);
@@ -42,7 +42,7 @@ public:
 		DummyListener dummyListenerB;
 		TypedDelegateBooleanParameter<DummyListener> * delegateB = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListenerB, &DummyListener::handler);
-		ObserverSubject notifier;
+		ListenerSubject notifier;
 		notifier.subscribe(delegateA);
 		notifier.subscribe(delegateB);
 
@@ -65,7 +65,7 @@ public:
 		DummyListener dummyListenerB;
 		TypedDelegateBooleanParameter<DummyListener> * delegateB = new TypedDelegateBooleanParameter<
 				DummyListener>(dummyListenerB, &DummyListener::handler);
-		ObserverSubject notifier;
+		ListenerSubject notifier;
 		notifier.subscribe(delegateA);
 		notifier.subscribe(delegateB);
 

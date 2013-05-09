@@ -3,7 +3,7 @@
 
 #include "Samplable.h"
 #include "DigitalInput.h"
-#include "ObserverSubject.h"
+#include "ListenerSubject.h"
 
 
 //------------------------------------------------------------------------------------------------------------

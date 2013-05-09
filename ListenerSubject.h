@@ -1,5 +1,5 @@
-#ifndef NOTIFIER_H_
-#define NOTIFIER_H_
+#ifndef LISTENERSUBJECT_H_
+#define LISTENERSUBJECT_H_
 
 #include <vector> // to store observers
 
@@ -14,12 +14,12 @@ class DelegateBooleanParameter;
 //!
 //! For example his implementation is more understandable (for me) when you have to observe a lot of different
 //! Inputs !
-class ObserverSubject {
+class ListenerSubject {
 public:
 	//--------------------------------------------------------------------------------------------------------
-	explicit ObserverSubject()	{}
+	explicit ListenerSubject()	{}
 	//--------------------------------------------------------------------------------------------------------
-	virtual ~ObserverSubject()	{}
+	virtual ~ListenerSubject()	{}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'subscriber' NOT NULL pointer to object where 'handler' will be called
@@ -38,4 +38,4 @@ private:
 	std::vector<DelegateBooleanParameter*> _observerList;
 };
 
-#endif /* NOTIFIER_H_ */
+#endif /* LISTENERSUBJECT_H_ */

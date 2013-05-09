@@ -1,14 +1,14 @@
-#include "ObserverSubject.h"
+#include "ListenerSubject.h"
 #include "DelegateBooleanParameter.h" // to notify observers.
 
 //--------------------------------------------------------------------------------------------------------
-void ObserverSubject::subscribe(DelegateBooleanParameter * const delegateToInvoke)
+void ListenerSubject::subscribe(DelegateBooleanParameter * const delegateToInvoke)
 {
 	_observerList.push_back(delegateToInvoke);
 }
 
 //--------------------------------------------------------------------------------------------------------
-void ObserverSubject::notifyObservers(bool newState)
+void ListenerSubject::notifyObservers(bool newState)
 {
 	std::vector<DelegateBooleanParameter*>::iterator aListener =  _observerList.begin() ;
 	for( aListener = _observerList.begin();
