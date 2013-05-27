@@ -89,7 +89,7 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.so.release.1112495032.1697988663." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.so.release.366414132" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.so.release">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.so.release.2053167852" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.so.release"/>
-							<builder buildPath="${ProjDirPath}/UnitTest" cleanBuildTarget="-c" command="scons" id="cdt.managedbuild.target.gnu.builder.so.release.1227201122" incrementalBuildTarget="" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.so.release"/>
+							<builder arguments="check" buildPath="${ProjDirPath}" cleanBuildTarget="-c" command="scons" id="cdt.managedbuild.target.gnu.builder.so.release.1227201122" incrementalBuildTarget="" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.so.release"/>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.784844128" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.so.release.378615466" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.release">
 								<option id="gnu.cpp.compiler.so.release.option.optimization.level.309559673" name="Optimization Level" superClass="gnu.cpp.compiler.so.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
@@ -277,13 +277,16 @@
 		<configuration configurationName="Example UnitTests">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
-		<configuration configurationName="Build Example executable.">
+		<configuration configurationName="Example"/>
+		<configuration configurationName="Library"/>
+		<configuration configurationName="Library UnitTests"/>
+		<configuration configurationName="Build Library">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
 		<configuration configurationName="example">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
-		<configuration configurationName="Build Library">
+		<configuration configurationName="Build Example executable.">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
 		<configuration configurationName="Build And Run UnitTests"/>

@@ -2,7 +2,6 @@
 #define LISTENERSUBJECT_H_
 
 #include <vector> // to store listeners
-
 //Forward declaration
 class DelegateBooleanParameter;
 
@@ -14,18 +13,24 @@ class DelegateBooleanParameter;
 //!
 //! For example his implementation is more understandable (for me) when you have to observe a lot of different
 //! Inputs !
-class ListenerSubject {
+class ListenerSubject
+{
 public:
 	//--------------------------------------------------------------------------------------------------------
-	explicit ListenerSubject()	{}
+	explicit ListenerSubject()
+	{
+	}
 	//--------------------------------------------------------------------------------------------------------
-	virtual ~ListenerSubject()	{}
+	virtual ~ListenerSubject()
+	{
+	}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'subscriber' NOT NULL pointer to object where 'handler' will be called
 	//!	'handler' is a method pointer from subscriber instance.
 	//! \post Object pointer and handler are stored for a futur notifying.
-	void subscribe(DelegateBooleanParameter * const delegateToInvokeWhenNotifyIsNeeded);
+	void subscribe(
+			DelegateBooleanParameter * const delegateToInvokeWhenNotifyIsNeeded);
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre 'newState' will be transfered to all subscriber
