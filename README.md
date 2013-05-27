@@ -14,11 +14,14 @@ It will help you to understand some concept before using it :
 Wikipedia is your friend as a first step !
 
 # Example:
-First you can take a look on unitTest.
+First you can take a look on "Example folder".
+- build example -> $(workingdirectory)Examples/scons check
+- run example to see outputs -> ./$(workingdirectory)Examples/example
+For further details have a look on unitTest.
 
 # Command :
  - build library -> $(workingdirectory)/scons
- - build and run tests -> $(workingdirectory)/UnitTest/scons
+ - build and run tests -> $(workingdirectory)/scons check
 
 # Environnment :
 -> scons and cxxtest needed.
