@@ -5,8 +5,8 @@ sources = [
 'Sources/ListenableSampledInput.cpp',
 'Sources/InvertedListenableSampledInput.cpp',
 ] 
-
 library = env.Library('OO-IO', sources )
+
 testList =  [
 'UnitTest/DelegateBooleanParameter.t.h',
 'UnitTest/ObserverSubject.t.h',

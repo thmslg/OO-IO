@@ -1,0 +1,27 @@
+env = Environment(tools = ['default', 'cxxtest'])
+env.Append(CPPFLAGS=['-Wall','-g'])
+
+Export('env')
+librariesPaths = [
+'..'
+] 
+libraries = []
+for subdir in librariesPaths : 
+	library = SConscript('%s/SConscript' % subdir)
+	libraries.append(library)
+
+sources = [
+'Sources/ListenerTracer.cpp',
+'Sources/HardwareDigitalInputEmulator.cpp',
+]
+source = env.Library('source', sources)
+env.Append(LIBS=source)
+
+env.Program('example', libraries +  ['main.cpp'])
+
+testList =  [
+'UnitTest/HardwareDigitalInputEmulator.t.h',
+]
+
+env.Append(LIBS=library)
+env.CxxTest('outputTest/delegaterunner', testList , CXXFLAGS='-Wall -W -Wextra')
