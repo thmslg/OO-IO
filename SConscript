@@ -1,15 +1,15 @@
 Import('env')
 
 sources = [
-'Sources/ListenerSubject.cpp',
 'Sources/ListenableSampledInput.cpp',
 'Sources/InvertedListenableSampledInput.cpp',
 ] 
-library = env.Library('OO-IO', sources )
+
+utils = SConscript('utils/SConscript')
+
+library = env.Library('OO-IO', sources + utils )
 
 testList =  [
-'UnitTest/DelegateBooleanParameter.t.h',
-'UnitTest/ObserverSubject.t.h',
 'UnitTest/ListenableSampledInput.t.h',
 'UnitTest/InvertedListenableSampledInput.t.h',
 ]
