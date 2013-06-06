@@ -2,6 +2,9 @@ env = Environment(tools = ['default', 'cxxtest'])
 env.Append(CPPFLAGS=['-Wall','-g'])
 Export('env')
 
-ooio = SConscript('SConscript')
+#build external library
+utils = env.SConscript('utils/SConscript' )
+env.Append(LIBS=utils)
 
-#env.Library('usableLibrary', ooio )
+#build OO-IO library
+ooio = SConscript('SConscript')

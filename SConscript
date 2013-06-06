@@ -6,11 +6,8 @@ sources = [
 'Sources/InvertedListenableSampledInput.cpp',
 ]
 
-library = localEnv.Library('OO-IO', sources )
-localEnv.Append(LIBS=library)
-
-utils = env.SConscript('utils/SConscript' )
-localEnv.Append(LIBS=utils)
+ooio = localEnv.Library('OO-IO', sources )
+localEnv.Prepend(LIBS=library)
 
 testList =  [
 'UnitTest/ListenableSampledInput.t.h',
@@ -19,4 +16,4 @@ testList =  [
 
 localEnv.CxxTest('testrunner',testList, CXXFLAGS='-Wall -W -Wextra')
 
-Return('library')
+Return('ooio')
