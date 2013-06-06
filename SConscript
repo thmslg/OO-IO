@@ -1,20 +1,22 @@
 Import('env')
+localEnv = env.Clone()
 
 sources = [
 'Sources/ListenableSampledInput.cpp',
 'Sources/InvertedListenableSampledInput.cpp',
-] 
+]
 
-utils = SConscript('utils/SConscript')
+library = localEnv.Library('OO-IO', sources )
+localEnv.Append(LIBS=library)
 
-library = env.Library('OO-IO', sources + utils )
+utils = env.SConscript('utils/SConscript' )
+localEnv.Append(LIBS=utils)
 
 testList =  [
 'UnitTest/ListenableSampledInput.t.h',
 'UnitTest/InvertedListenableSampledInput.t.h',
 ]
 
-env.Append(LIBS=library)
-env.CxxTest('testrunner',testList, CXXFLAGS='-Wall -W -Wextra')
+localEnv.CxxTest('testrunner',testList, CXXFLAGS='-Wall -W -Wextra')
 
 Return('library')

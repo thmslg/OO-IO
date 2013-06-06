@@ -4,7 +4,7 @@
 #include "DigitalInput.h"
 #include "ListenableSampledInput.h"
 #include "utils/DelegateBooleanParameter.h"
-#include "ListenerSubject.h"
+#include "utils/ListenerSubject.h"
 
 class InvertedListenableSampledInput: public DigitalInput
 {
