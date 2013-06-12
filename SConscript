@@ -7,7 +7,7 @@ sources = [
 ]
 
 ooio = localEnv.Library('OO-IO', sources )
-localEnv.Prepend(LIBS=library)
+localEnv.Prepend(LIBS=ooio)
 
 testList =  [
 'UnitTest/ListenableSampledInput.t.h',
