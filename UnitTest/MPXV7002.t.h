@@ -27,13 +27,13 @@ public:
 		DummySingleEndedADCInput ADC(0x1FFFF);
 		MPXV7002 sensor(ADC);
 		// O,5V
-		ADC.UpdateInputValue(0x1FFFF/10);
+		ADC.UpdateInputValue((0x1FFFF/10)-1);
 		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), -20000);
 		// 2,5V
 		ADC.UpdateInputValue(0x1FFFF/2);
 		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), 0);
 		// 4,5V
-		ADC.UpdateInputValue(9*(0x1FFFF/10));
+		ADC.UpdateInputValue(9*(0x1FFFF/10)+1);
 		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), 20000);
 	}
 
