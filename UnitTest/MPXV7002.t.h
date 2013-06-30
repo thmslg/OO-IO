@@ -26,7 +26,12 @@ public:
 		//We plan to use a 17bit full scale.
 		DummySingleEndedADCInput ADC(0x1FFFF);
 		MPXV7002 sensor(ADC);
-		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), 0);
+		// O,5V
+		ADC.UpdateInputValue(0XFFFF);
+		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), -20000);
+		// 4,5V
+		ADC.UpdateInputValue(0);
+		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), 20000);
 	}
 
 };

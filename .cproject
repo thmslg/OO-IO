@@ -143,13 +143,13 @@
 		<configuration configurationName="Example"/>
 		<configuration configurationName="Library"/>
 		<configuration configurationName="Library UnitTests"/>
-		<configuration configurationName="Build Library">
+		<configuration configurationName="Build Example executable.">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
 		<configuration configurationName="example">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
-		<configuration configurationName="Build Example executable.">
+		<configuration configurationName="Build Library">
 			<resource resourceType="PROJECT" workspacePath="/OO-IO"/>
 		</configuration>
 		<configuration configurationName="Build And Run UnitTests"/>

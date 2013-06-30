@@ -53,4 +53,10 @@
 			</matcher>
 		</filter>
 	</filteredResources>
+	<variableList>
+		<variable>
+			<name>CXXTEST</name>
+			<value>file:/usr/local/include/cxxtest</value>
+		</variable>
+	</variableList>
 </projectDescription>
