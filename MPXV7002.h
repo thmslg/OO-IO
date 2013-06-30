@@ -15,6 +15,11 @@ public:
 	//! \post None
 	MPXV7002( SingleEndedADCInput & adc);
 	virtual ~MPXV7002(){}
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre See base class
+	//! \post See base class
+	virtual int GetPressureInTenthPa();
 private:
 	// An external ADC is reading the value on the physical sensor.
 	SingleEndedADCInput & m_adc;

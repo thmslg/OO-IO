@@ -15,6 +15,7 @@ testList =  [
 'UnitTest/ListenableSampledInput.t.h',
 'UnitTest/InvertedListenableSampledInput.t.h',
 'UnitTest/SingleEndedADCInput.t.h',
+'UnitTest/MPXV7002.t.h',
 ]
 
 localEnv.CxxTest('testrunner',testList, CXXFLAGS='-Wall -W -Wextra')

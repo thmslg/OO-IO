@@ -4,7 +4,7 @@
 class PressureSensor
 {
 public:
-	virtual ~PressureSensor();
+	virtual ~PressureSensor(){}
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre "None"
 	//! \post Return the current pressure in Pa/10
