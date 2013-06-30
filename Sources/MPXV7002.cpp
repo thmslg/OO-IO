@@ -1,13 +1,9 @@
 #include "../MPXV7002.h"
 
-MPXV7002::MPXV7002()
+MPXV7002::MPXV7002(SingleEndedADCInput & adc):
+m_adc(adc)
 {
-	// TODO Auto-generated constructor stub
 
 }
 
-MPXV7002::~MPXV7002()
-{
-	// TODO Auto-generated destructor stub
-}
 

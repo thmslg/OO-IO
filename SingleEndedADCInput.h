@@ -18,11 +18,21 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	virtual ~SingleEndedADCInput()
 	{}
+
+	//-------- QUERIES ---------------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
 	//! \post Return the last acquired input value.
 	//! return value SHOULD NOT be higher than fullScaleValue :
 	unsigned int GetInputValue();
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre None
+	//! \post Return the fullScaleValue for external computation.
+	unsigned int GetFullScaleValue()
+	{
+		return m_fullScaleValue;
+	}
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre "fullScaleVoltage" voltage applied to the ADC, corresponding to the full scale value
 	//! \post return the converted last acquired input voltage.

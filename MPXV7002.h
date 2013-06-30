@@ -11,10 +11,10 @@ class MPXV7002 : public PressureSensor
 {
 public:
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre "adc" will be use to read input value
+	//! \pre "adc" will be used to read input value
 	//! \post None
 	MPXV7002( SingleEndedADCInput & adc);
-	virtual ~MPXV7002();
+	virtual ~MPXV7002(){}
 private:
 	// An external ADC is reading the value on the physical sensor.
 	SingleEndedADCInput & m_adc;

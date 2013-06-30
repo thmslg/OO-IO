@@ -5,6 +5,7 @@ sources = [
 'Sources/ListenableSampledInput.cpp',
 'Sources/InvertedListenableSampledInput.cpp',
 'Sources/SingleEndedADCInput.cpp',
+'Sources/MPXV7002.cpp',
 ]
 
 ooio = localEnv.Library('OO-IO', sources )
