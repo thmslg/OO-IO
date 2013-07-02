@@ -10,10 +10,13 @@
 // Vout  = VS × (0.2 × P(kPa)+0.5) ± 6.25%VFSS.
 // with VS = 5Vdc
 // Further information on the internets/datasheet.
+//
+// My choices :
 // As first test with decide to NOT TAKE INTO ACCOUNT the approx.
 // So the following equation is used :
 // VS = Vout / (0.2 × P(kPa)+0.5)
-// i.e. P(Pa/10) = ((Vout/Vs)-0,5)/20
+// i.e. P(Pa/10) = ((N/(2^k-1)-0,5) / 0,2)*10000
+// This equation is ranged. We have a saturated state before 0,5V and after 4,5V.
 class MPXV7002 : public PressureSensor
 {
 public:
@@ -37,13 +40,13 @@ public:
 	virtual bool IsSaturated() const;
 private:
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre
-	//! \post
+	//! \pre None
+	//! \post return true if the sensor is saturated on the low voltage side, I.E < 0,5V
 	bool _IsLowSaturated() const;
 
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre
-	//! \post
+	//! \pre None
+	//! \post return true if the sensor is saturated on the high voltage side, I.E < 4,5V
 	bool _IsHighSaturated() const;
 
 	// An external ADC is reading the value on the physical sensor.
