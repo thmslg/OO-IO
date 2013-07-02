@@ -29,8 +29,23 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre See base class
 	//! \post See base class
-	virtual int GetPressureInTenthPa();
+	virtual int GetPressureInTenthPa() const;
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre See base class
+	//! \post See base class
+	virtual bool IsSaturated() const;
 private:
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre
+	//! \post
+	bool _IsLowSaturated() const;
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre
+	//! \post
+	bool _IsHighSaturated() const;
+
 	// An external ADC is reading the value on the physical sensor.
 	SingleEndedADCInput & m_adc;
 };

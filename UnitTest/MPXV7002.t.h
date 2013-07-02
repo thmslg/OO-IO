@@ -21,6 +21,7 @@ public:
 class MPXV7002Test: public CxxTest::TestSuite
 {
 public:
+	//--------------------------------------------------------------------------------------------------------
 	void testPressureSensorLaw()
 	{
 		//We plan to use a 17bit full scale ADC.
@@ -37,6 +38,30 @@ public:
 		// 4,5V
 		ADC.UpdateInputValue(9*(0x1FFFF/10)+1);
 		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), 20000);
+	}
+
+	//--------------------------------------------------------------------------------------------------------
+	void testLowVoltageSaturation()
+	{
+		//We plan to use a 17bit full scale ADC.
+		DummySingleEndedADCInput ADC(0x1FFFF,5);
+		MPXV7002 sensor(ADC);
+		ADC.UpdateInputValue(0);
+		TS_ASSERT(sensor.IsSaturated());
+		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(),-20000);
+
+	}
+
+	//--------------------------------------------------------------------------------------------------------
+	void testHighVoltageSaturation()
+	{
+		//We plan to use a 17bit full scale ADC.
+		DummySingleEndedADCInput ADC(0x1FFFF,5);
+		MPXV7002 sensor(ADC);
+		ADC.UpdateInputValue(0x1FFFF);
+		TS_ASSERT(sensor.IsSaturated());
+		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(),20000);
+
 	}
 
 };
