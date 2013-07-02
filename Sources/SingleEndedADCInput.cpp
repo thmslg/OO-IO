@@ -1,13 +1,18 @@
 #include "../SingleEndedADCInput.h"
 
 //--------------------------------------------------------------------------------------------------------
-float SingleEndedADCInput::GetConvertedScaledInputValue(unsigned int fullScaleVoltage)
+float SingleEndedADCInput::GetConvertedScaledInputValue() const
 {
-	return ((float)m_currentInputValue / m_fullScaleValue)*fullScaleVoltage;
+	return ((float)m_currentInputValue / m_fullScaleValue) * m_fullScaleVoltage;
 }
 
 //--------------------------------------------------------------------------------------------------------
-unsigned int SingleEndedADCInput::GetInputValue()
+unsigned int SingleEndedADCInput::GetConvertedVoltage(float expectedVoltage) const
 {
-	return m_currentInputValue;
+	return expectedVoltage*(float)m_fullScaleValue/m_fullScaleVoltage;
+}
+
+float SingleEndedADCInput::GetResolution() const
+{
+	return m_fullScaleVoltage/(float)m_fullScaleValue;
 }

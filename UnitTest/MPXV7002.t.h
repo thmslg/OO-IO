@@ -6,8 +6,8 @@
 class DummySingleEndedADCInput : public SingleEndedADCInput
 {
 public:
-	DummySingleEndedADCInput(unsigned int fullScaleValue) :
-			SingleEndedADCInput(fullScaleValue)
+	DummySingleEndedADCInput(unsigned int fullScaleValue, float referenceVoltage) :
+			SingleEndedADCInput(fullScaleValue,referenceVoltage)
 	{
 
 	}
@@ -21,11 +21,13 @@ public:
 class MPXV7002Test: public CxxTest::TestSuite
 {
 public:
-	void testSimpleGetStateAtConstruction()
+	void testPressureSensorLaw()
 	{
-		//We plan to use a 17bit full scale.
-		DummySingleEndedADCInput ADC(0x1FFFF);
+		//We plan to use a 17bit full scale ADC.
+		DummySingleEndedADCInput ADC(0x1FFFF,5);
 		MPXV7002 sensor(ADC);
+		//We test three "characteristic" points of the datasheet graph.
+		//We DO NOT consider the approximation.
 		// O,5V
 		ADC.UpdateInputValue((0x1FFFF/10)-1);
 		TS_ASSERT_EQUALS(sensor.GetPressureInTenthPa(), -20000);

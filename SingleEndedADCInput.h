@@ -11,9 +11,11 @@ public:
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre "fullScaleValue" value of full scale (for example ADC 17bits : 0x1FFFF)
 	//! \post
-	SingleEndedADCInput(unsigned int fullScaleValue) :
+	SingleEndedADCInput(unsigned int fullScaleValue,
+						float fullScalleVoltage) :
 	m_fullScaleValue(fullScaleValue),
-	m_currentInputValue(0)
+	m_currentInputValue(0),
+	m_fullScaleVoltage(fullScalleVoltage)
 	{}
 	//--------------------------------------------------------------------------------------------------------
 	virtual ~SingleEndedADCInput()
@@ -24,26 +26,45 @@ public:
 	//! \pre None
 	//! \post Return the last acquired input value.
 	//! return value SHOULD NOT be higher than fullScaleValue :
-	unsigned int GetInputValue();
+	unsigned int GetInputValue() const
+	{
+		return m_currentInputValue;
+	}
 
 	//--------------------------------------------------------------------------------------------------------
 	//! \pre None
 	//! \post Return the fullScaleValue for external computation.
-	unsigned int GetFullScaleValue()
+	unsigned int GetFullScaleValue() const
 	{
 		return m_fullScaleValue;
 	}
+
 	//--------------------------------------------------------------------------------------------------------
-	//! \pre "fullScaleVoltage" voltage applied to the ADC, corresponding to the full scale value
-	//! \post return the converted last acquired input voltage.
+	//! \pre None
+	//! \post return the converted last acquired input voltage, in Volt.
 	//! WARNING : float division, long operation
-	float GetConvertedScaledInputValue(unsigned int fullScaleVoltage);
+	float GetConvertedScaledInputValue() const;
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre "voltage" value asked
+	//! \post corresponding input value
+	//! WARNING it's not EXACTLY the same value, we have a defined resolution.
+	//! SEE GetResolution() to know the maximum difference
+	unsigned int GetConvertedVoltage(float voltage) const;
+
+	//--------------------------------------------------------------------------------------------------------
+	//! \pre "None"
+	//! \post Return the resolution of the ADC.
+	//! Measured voltage is approx. +- resolution.
+	float GetResolution() const;
 
 protected:
 	//--------------------------------------------------------------------------------------------------------
 	unsigned int const m_fullScaleValue;
 	//--------------------------------------------------------------------------------------------------------
 	unsigned int m_currentInputValue;
+	//--------------------------------------------------------------------------------------------------------
+	float m_fullScaleVoltage;
 
 };
 
