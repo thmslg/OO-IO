@@ -28,10 +28,10 @@ First you can take a look on "Example folder".
 For further details have a look on unitTest.
 
 ## Command :
- - build library -> $(workingdirectory)/scons
- - build and run tests -> $(workingdirectory)/scons check
+- build library -> $(workingdirectory)/scons
+- build and run tests -> $(workingdirectory)/scons check
 
 ## Environnment :
--> gcc
--> scons and cxxtest needed.
--> Eclipse project (Juno SR2, CDT 8) for .project and .cproject.
+- gcc
+- scons and cxxtest needed.
+- Eclipse project (Juno SR2, CDT 8) for .project and .cproject.
