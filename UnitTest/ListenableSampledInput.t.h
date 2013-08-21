@@ -2,7 +2,7 @@
 #define OBSERVABLESAMPLEDINPUT_T_H_
 
 #include "../ListenableSampledInput.h"
-#include "../utils/DelegateBooleanParameter.h"
+#include "DelegateBooleanParameter.h"
 
 #include "Mocks/DummyPhysicalInput.h"
 #include "Mocks/DummyListener.h"

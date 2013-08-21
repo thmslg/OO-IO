@@ -3,7 +3,8 @@ env.Append(CPPFLAGS=['-Wall','-g'])
 Export('env')
 
 #build external library
-utils = env.SConscript('utils/SConscript' )
+# WARNING We suppose tht "Utils" folder is at the same "component" level as here.
+utils = env.SConscript('../Utils/SConscript' )
 env.Append(LIBS=utils)
 
 #build OO-IO library

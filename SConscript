@@ -1,6 +1,10 @@
 Import('env')
 localEnv = env.Clone()
 
+usedModules = [
+'../Utils',
+] 
+localEnv.Append(CPPPATH=usedModules)
 sources = [
 'Sources/ListenableSampledInput.cpp',
 'Sources/InvertedListenableSampledInput.cpp',

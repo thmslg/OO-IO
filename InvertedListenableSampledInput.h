@@ -3,8 +3,8 @@
 
 #include "DigitalInput.h"
 #include "ListenableSampledInput.h"
-#include "utils/DelegateBooleanParameter.h"
-#include "utils/ListenerSubject.h"
+#include "DelegateBooleanParameter.h"
+#include "ListenerSubject.h"
 
 class InvertedListenableSampledInput: public DigitalInput
 {

@@ -1,6 +1,6 @@
 #include "../ListenableSampledInput.h"
-#include "../utils/ListenerSubject.h"
-#include "../utils/DelegateBooleanParameter.h"
+#include "ListenerSubject.h"
+#include "DelegateBooleanParameter.h"
 
 
 //--------------------------------------------------------------------------------------------------------
